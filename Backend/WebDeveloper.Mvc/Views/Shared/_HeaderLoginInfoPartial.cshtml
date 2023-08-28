@@ -1,0 +1,19 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    // encontrar el claim de la imagen
+    var imageClaim = User.Claims.FirstOrDefault(c => c.Type == "urn:google:picture");
+    <form asp-action="Signout" asp-controller="Account" method="post" class="form-inline">
+        @if (imageClaim != null)
+        {
+            <span>
+                <img src="@imageClaim.Value" alt="..." style="width: 50px;" class="img-thumbnail">
+            </span>
+        }
+
+        <span class="navbar-text">
+            Hola, @User.Identity.Name
+        </span>
+        <input type="submit" value="Cerrar" class="btn btn-sm btn-link" />
+    </form>
+}
+

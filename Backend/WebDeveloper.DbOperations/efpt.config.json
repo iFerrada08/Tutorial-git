@@ -1,0 +1,67 @@
+﻿{
+   "ContextClassName": "ChinookContext",
+   "ContextNamespace": "Infra.Data",
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "Core.Entities",
+   "OutputContextPath": "..\/WebDeveloper.Infra\/Data",
+   "OutputPath": "..\/WebDeveloper.Core\/Entities",
+   "ProjectRootNamespace": "WebDeveloper",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Album]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Artist]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Customer]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Employee]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Genre]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Invoice]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[InvoiceLine]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MediaType]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Playlist]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PlaylistTrack]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Track]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

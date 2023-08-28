@@ -1,0 +1,61 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack</title>
+  </head>
+
+  <body>
+    <section class="container">
+      <!-- <div class="row mb-3 mt-3">
+            <div class="col-4 col-md-2">Menu</div>
+            <div class="col-8">Contenido</div>
+            <div class="col-12 col-md-2">Menu2</div>
+        </div> -->
+      <form class="my-3" id="formArtista">
+        <div class="form-group">
+          <label for="nombreArtista">Nombre del artista</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombreArtista"
+            aria-describedby="emailHelp"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Ingresa el nombre del artista de tu preferencia.</small
+          >
+        </div>
+        <button type="button" id="otroBoton">otro boton</button>
+        <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
+      </form>
+      <div class="table-responsive">
+        <table id="tabla-reporte" class="table">
+          <thead>
+            <tr>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Cantidad
+              </th>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Cantidad
+              </th>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Cantidad
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="./main.js"></script>
+  </body>
+</html>

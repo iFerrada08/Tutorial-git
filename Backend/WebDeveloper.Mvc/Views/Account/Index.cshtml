@@ -1,0 +1,31 @@
+﻿@model IEnumerable<System.Security.Claims.Claim>
+@{
+    ViewData["Title"] = "Claims del usuario";
+}
+
+@if (Model == null || Model.Count() == 0)
+{
+    <div>
+        No hay claims
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Type</td>
+                <td>Valor</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var claim in Model)
+            {
+                <tr>
+                    <td>@claim.Type</td>
+                    <td>@claim.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

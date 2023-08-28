@@ -1,0 +1,56 @@
+﻿@model WebDeveloper.Core.ViewModels.AlbumPorArtistaViewModel
+
+@{
+    ViewData["Title"] = "Reporte de Album por Artista";
+}
+
+@section Styles {
+    <link href="~/css/datatables.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/js/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#reporte').DataTable();
+        });
+    </script>
+}
+
+<h2>
+    @Model.Title
+</h2>
+@if (Model.Items == null || Model.Items.Count <= 0)
+{
+    <div>
+        No hay items
+    </div>
+}
+else
+{
+    <table id="reporte">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].ArtistName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].CantidadAlbumes)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.ArtistName
+                    </td>
+                    <td>
+                        @item.CantidadAlbumes
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

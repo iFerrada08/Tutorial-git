@@ -1,0 +1,79 @@
+﻿@model WebDeveloper.Core.Entities.Track
+
+@{
+    var generosItems = new List<SelectListItem>();
+    if (ViewData["generosItems"] != null)
+    {
+        generosItems = ViewData["generosItems"] as List<SelectListItem>;
+    }
+
+    var albumsItems = new List<SelectListItem>();
+    if (ViewData["albumsItems"] != null)
+    {
+        albumsItems = ViewData["albumsItems"] as List<SelectListItem>;
+    }
+
+    var mediaItems = new List<SelectListItem>();
+    if (ViewData["mediaItems"] != null)
+    {
+        mediaItems = ViewData["mediaItems"] as List<SelectListItem>;
+    }
+}
+
+<form asp-antiforgery="true" novalidate id="form-track">
+    <input asp-for="TrackId" type="hidden" />
+    <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Genero</label>
+        <select asp-for="GenreId" asp-items="generosItems" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Album</label>
+        <select asp-for="AlbumId" asp-items="albumsItems" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Tipo</label>
+        <select asp-for="MediaTypeId" asp-items="mediaItems" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Precio (S/)</label>
+        <input asp-for="UnitPrice" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+<script>
+    $(function () {
+        // Programar lo que va a pasar cuando se haga submit al formulario
+        $("#form-track").on("submit", function (e) {
+            // deshabilitarla actualizacion total de la pagina
+            e.preventDefault();
+            // obtener los input del formulario
+            const token = e.currentTarget["__RequestVerificationToken"].value;
+            const trackData = {
+                trackId: e.currentTarget["TrackId"].value,
+                name: e.currentTarget["Name"].value,
+                genreId: e.currentTarget["GenreId"].value,
+                albumId: e.currentTarget["AlbumId"].value,
+                mediaTypeId: e.currentTarget["MediaTypeId"].value,
+                unitPrice: e.currentTarget["UnitPrice"].value,
+                token
+            };
+
+            // Realizar el AJAX POST
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("SaveAjax", "Tracks")",
+                headers: { "RequestVerificationToken": token },
+                data: trackData
+            }).done(function (result) {
+                console.log(result);
+                // Cunado result.success sea true, limpiar el form, cerrar el modal y actualizar el listado
+            })
+
+        })
+    })
+</script>

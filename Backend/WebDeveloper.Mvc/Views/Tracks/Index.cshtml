@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebDeveloper.Core.ViewModels.TrackViewModel>
+@{
+    ViewData["Title"] = "Administrar Canciones";
+}
+
+<h1>
+    Administrador de Canciones
+</h1>
+
+<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#modal-track" id="btn-registrar">Registrar</button>
+
+<table class="table table-sm table-striped" id="tabla-tracks">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Artista</th>
+            <th>Album</th>
+            <th>Genero</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var track in Model)
+        {
+            <tr>
+                <td>@track.Name</td>
+                <td>@track.ArtistName</td>
+                <td>@track.AlbumName</td>
+                <td>@track.GenreName</td>
+                <td>@track.MediaTypeName</td>
+                <td>@track.UnitPrice</td>
+                <td>
+                    <button class="btn btn-sm btn-link btn-editar" data-toggle="modal" data-target="#modal-track" data-id="@track.TrackId">Editar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-track" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-content">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // Agregar los event listener de los elementos
+            $("#btn-registrar").on("click", function (e) {
+                $("#modal-content").load("@Url.Action("FormPartial", "Tracks")" + "?trackId=0");
+            });
+
+            $("#tabla-tracks tbody").on("click", ".btn-editar", function () {
+                // Obtener el id del registro a editar
+                const id = $(this).data("id");
+                $("#modal-content").load("@Url.Action("FormPartial", "Tracks")" + `?trackId=${id}`);
+            })
+        })
+    </script>
+} 

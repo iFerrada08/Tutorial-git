@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Iniciar Sesion</h1>
+</div>
+
+<div>
+    <form asp-action="Login" asp-controller="Account" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <input type="text" name="email" value="" />
+        <input type="password" name="password" value="" />
+        <input type="submit" name="submit" value="Iniciar Sesion" />
+    </form>
+    <form asp-action="LoginGoogle" asp-controller="Account" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <button type="submit">Google</button>
+    </form>
+</div>
